@@ -1,0 +1,26 @@
+{
+  "name": "storybooks",
+  "version": "1.0.0",
+  "description": "App for writting stories",
+  "main": "bin/dev",
+  "scripts": {
+    "start": "node bin/dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/turkonjavla/StoryBooks.git"
+  },
+  "author": "Vladimir Turkonja",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/turkonjavla/StoryBooks/issues"
+  },
+  "homepage": "https://github.com/turkonjavla/StoryBooks#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^5.0.9"
+  },
+  "devDependencies": {
+    "dotenv": "^5.0.1"
+  }
+}
