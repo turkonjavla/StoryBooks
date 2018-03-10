@@ -1,4 +1,4 @@
-<nav class="grey darken-1">
+<nav class="grey darken-3">
     <div class="container">
         <div class="nav-wrapper">
             <a href="/stories" class="brand-logo center">StoryBooks</a>
@@ -14,12 +14,54 @@
                     <li>
                         <a href="/auth/logout">Logout <i class="fas fa-sign-out-alt fa-1x"></i></a>
                     </li>
-                    {{else}}
+                {{else}}
                     <li>
                         <a href="/storeis">Public Storeis <i class="fa fa-book fa-1x"></i></a>
                     </li>
                 {{/if}}
             </ul>
+            {{!-- SIDE MENU --}}
+            <ul id="main-menu" class="side-nav">
+                {{#if user}}
+                <li>
+                    <div class="user-view">
+                        <div class="background" style="background: #757F9A;  /* fallback for old browsers */
+                            background: -webkit-linear-gradient(to right, #D7DDE8, #757F9A);  /* Chrome 10-25, Safari 5.1-6 */
+                            background: linear-gradient(to right, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */">
+                            <img src="" alt="">
+                        </div>
+                        <a href="#!user"><img class="circle" src="{{user.image}}"></a>
+                        <a href="#!name" style="color: black;">{{user.firstName}} {{user.lastName}}</a>
+                        <a href="#!email" style="color: black;"><span class="">{{user.email}}</span></a>
+                    </div>
+                </li>
+                <li>
+                    <a class="subheader">Profile</a>
+                </li>
+                <li>
+                    <a href="/dashboard" class="waves-effect"><i class="fa fa-cog fa-1x"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="" class="waves-effect"><i class="fa fa-user fa-1x"></i> My Stories</a>
+                </li>
+                <li>
+                    <a class="waves-effect" href="/auth/logout"><i class="fa fa-sign-out-alt fa-1x"></i>Sign out</a>
+                </li>
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li>
+                    <a href="" class="waves-effect"><i class="fa fa-book fa-1x"></i> Public Stories</a>
+                </li>
+                {{else}}  
+                <li>
+                    <a href="/auth/google" class="btn red darken-1 waves-effect"><i class="fab fa-google fa-1x left"></i> Login with Google</a>
+                </li>
+                <li>
+                    <a href="" class="waves-effect"><i class="fa fa-book fa-1x"></i> Public Stories</a>
+                </li>
+            </ul>
+            {{/if}}
         </div>
     </div>
 </nav>  
