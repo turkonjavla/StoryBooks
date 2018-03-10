@@ -3,6 +3,7 @@ const cookieParser = require("cookie-parser"),
       passport     = require("passport"),
       session      = require("express-session"),
       express      = require("express"),
+      exphbs       = require("express-handlebars"),
       keys         = require("./config/keys"),
       app          = express(),
       port         = process.env.PORT || 5050;
@@ -33,15 +34,18 @@ app.use((req, res, next) => {
  // PASSPORT CONFIG
  require(".//config/passport")(passport);
 
-// LOAD ROUTES
-const auth = require("./routes/auth");
+// HANDLEBARS
+app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.set("view engine", "handlebars");
 
-app.get("/", (req, res) => {
-    res.send("IT WORKS");
-});
+// LOAD ROUTES
+const auth = require("./routes/auth"),
+      index = require("./routes/index");
 
 // ROUTES
+app.use("/", index);
 app.use("/auth", auth);
+
 
 app.listen(port, process.env.IP, () => {
     console.log(`Server open at port: ${port}`);
