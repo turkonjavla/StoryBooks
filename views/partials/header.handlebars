@@ -7,18 +7,9 @@
             </a>
             {{!-- RIGHT NAV --}}
             <ul class="right hide-on-small-only">
-                {{#if user}}
-                    <li>
-                        <a href="/dashboard">Welcome {{user.firstName}}</a>
-                    </li>
-                    <li>
-                        <a href="/auth/logout">Logout <i class="fas fa-sign-out-alt fa-1x"></i></a>
-                    </li>
-                {{else}}
-                    <li>
-                        <a href="/storeis">Public Storeis <i class="fa fa-book fa-1x"></i></a>
-                    </li>
-                {{/if}}
+                <li>
+                    <a href="/storeis">Public Storeis <i class="fa fa-book fa-1x"></i></a>
+                </li>
             </ul>
             {{!-- SIDE MENU --}}
             <ul id="main-menu" class="side-nav">
