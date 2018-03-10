@@ -2,7 +2,7 @@ const express = require("express"),
       router  = express.Router();
 
 router.get("/", (req, res) => {
-    res.send("IT WORKS");
+    res.render("index/welcome");
 });
 
 router.get("/dashboard", (req, res) => {
