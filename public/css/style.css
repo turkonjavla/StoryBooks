@@ -3,6 +3,11 @@ body {
     min-height: 100vh;
     flex-direction: column;
 }
+
+.mt-5 {
+    margin-top: 80px;
+}
+
 .mb-5 {
     margin-bottom: 30px;
 }
