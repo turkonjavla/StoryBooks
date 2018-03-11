@@ -3,6 +3,9 @@ body {
     min-height: 100vh;
     flex-direction: column;
 }
+.mb-5 {
+    margin-bottom: 30px;
+}
 
 .user-view .background {
     background: #757F9A;  /* fallback for old browsers */
@@ -36,5 +39,13 @@ main {
 }
 
 .page-footer .container ul li a:hover {
+    color: #18bc9c;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+    color: #333;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
     color: #18bc9c;
 }
