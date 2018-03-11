@@ -10,6 +10,14 @@ const cookieParser = require("cookie-parser"),
       app          = express(),
       port         = process.env.PORT || 5050;
 
+
+// HANDLEBARS HELPERS
+const {
+    truncate,
+    stripTags
+} = require("./helpers/hbs");
+
+
 // DB connection
 const db = keys.mongoURI;
 mongoose.connect(db)
@@ -43,7 +51,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 // HANDLEBARS
-app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.engine("handlebars", exphbs({
+    helpers: {
+        truncate: truncate,
+        stripTags: stripTags
+    },
+    defaultLayout: "main"
+}));
 app.set("view engine", "handlebars");
 
 // LOAD ROUTES
