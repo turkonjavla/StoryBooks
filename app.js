@@ -1,4 +1,5 @@
 const cookieParser = require("cookie-parser"),
+      bodyParser   = require("body-parser"),
       mongoose     = require("mongoose"),
       passport     = require("passport"),
       session      = require("express-session"),
@@ -36,6 +37,10 @@ app.locals.moment = moment(new Date).format("YYYY");
 
  // PASSPORT CONFIG
  require("./config/passport")(passport);
+
+// BODY PARSER
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 // HANDLEBARS
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
