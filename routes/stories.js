@@ -14,7 +14,6 @@ router.get("/", (req, res) => {
         .then(stories => {  
             res.render("stories/index", {stories: stories});
         });
-
 });
 
 // STORIES NEW
@@ -51,7 +50,13 @@ router.post("/", ensureAuthenticated, (req, res) => {
 
 // STORIES SHOW
 router.get("/:id", (req, res) => {
-    res.render("stories/show");
+    let id = req.params.id;
+
+    Story.findById(id)
+        .populate("user")
+        .then(story => {
+            res.render("stories/show", {story: story});
+        });
 });
 
 router.get("/:id/edit", ensureAuthenticated, (req, res) => {

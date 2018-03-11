@@ -1,1 +1,22 @@
-<h2>Show story</h2>
+<div class="row">
+    <div class="col s12 m3 mt-5">
+        <div class="card center-align hoverable">
+            <div class="card-content">
+                <span class="card-title">{{story.user.firstName}} {{story.user.lastName}}</span>
+                <img src="{{story.user.image}}" class="circle responsive-img">
+            </div>
+            <div class="card-action">
+                <a href="">More stories from <strong>{{story.user.firstName}}</strong></a>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m9">
+        <h3>{{story.title}}</h3>
+        <div class="card hoverable">
+            <div class="card-content">
+                <span>{{formatDate story.date "MMMM Do YYYY"}}</span>
+                {{{story.body}}}
+            </div>
+        </div>
+    </div>
+</div>
