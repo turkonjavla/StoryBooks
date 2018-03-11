@@ -10,6 +10,7 @@ const {ensureAuthenticated, ensureGuest} = require("../helpers/auth");
 // STORIES INDEX
 router.get("/", (req, res) => {
     Story.find({status: "public"})
+        .sort({date: "desc"})
         .populate("user")
         .then(stories => {  
             res.render("stories/index", {stories: stories});
