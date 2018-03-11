@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 });
 
  // PASSPORT CONFIG
- require(".//config/passport")(passport);
+ require("./config/passport")(passport);
 
 // HANDLEBARS
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
