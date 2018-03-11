@@ -1,6 +1,9 @@
 const express = require("express"),
       router  = express.Router();
 
+// MODELS
+const Story = require("../models/Story");
+
 // Authentication
 const {ensureAuthenticated, ensureGuest} = require("../helpers/auth");
 
@@ -12,6 +15,33 @@ router.get("/", (req, res) => {
 // STORIES NEW
 router.get("/new", ensureAuthenticated, (req, res) => {
     res.render("stories/new");
+});
+
+// STORIES CREATE
+router.post("/", ensureAuthenticated, (req, res) => {
+    let allowComments;
+
+    if(req.body.allowComments) {
+        allowComments = true
+    }
+    else {
+        allowComments = false;
+    }
+
+    const newStory = {
+        title: req.body.title,
+        body: req.body.body,
+        stats: req.body.status,
+        allowComments: allowComments,
+        user: req.user.id
+    }
+
+    // CREATE story
+    Story.create(newStory)
+        .then(story => {
+            res.redirect(`/stories/${story.id}`);
+        })
+        .catch(err => console.log(err));
 });
 
 // STORIES SHOW
