@@ -14,7 +14,8 @@
         <h3>{{story.title}}</h3>
         <div class="card hoverable">
             <div class="card-content">
-                <span>{{formatDate story.date "MMMM Do YYYY"}}</span>
+                <a href="/stories" class="back-to-stories"><i class="fa fa-chevron-left"></i> Back to stories</a>
+                <span class="date">{{formatDate story.date "MMMM Do YYYY"}}</span>
                 {{{story.body}}}
             </div>
         </div>
