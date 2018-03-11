@@ -41,11 +41,13 @@ app.set("view engine", "handlebars");
 
 // LOAD ROUTES
 const auth = require("./routes/auth"),
-      index = require("./routes/index");
+      index = require("./routes/index"),
+      stories = require("./routes/stories");
 
 // ROUTES
 app.use("/", index);
 app.use("/auth", auth);
+app.use("/stories", stories);
 
 
 app.listen(port, process.env.IP, () => {
