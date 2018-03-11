@@ -32,7 +32,7 @@ app.use((req, res, next) => {
     res.locals.user = req.user || null;
     next();
 });
-app.locals.moment = moment;
+app.locals.moment = moment(new Date).format("YYYY");
 
  // PASSPORT CONFIG
  require("./config/passport")(passport);
