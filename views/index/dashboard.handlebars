@@ -1,1 +1,58 @@
-<h3>Welcome {{user.firstName}}</h3>
+<div class="row mt-3">
+    <h4 class="center-align">Dashboard</h4>
+    <div class="col s12 m3">
+        <div class="card center-align hoverable">
+            <div class="card-content">
+                <span class="card-title">Welcome, {{user.firstName}} {{user.lastName}}</span>
+                <img src="{{user.image}}" class="circle responsive-img">
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m9">
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header active"><i class="fa fa-book"></i> Stories</div>
+                <div class="collapsible-body">
+                    <span>Edit or delete yout stories here <hr>
+                        {{#if stories}}
+                        <table class="striped">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Date Created</th>
+                                    <th>Time Created</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each stories}}
+                                <tr>
+                                    <td><a href="/stories/{{id}}">{{title}}</a></td>
+                                    <td>{{formatDate date "MMMM Do YYYY"}}</td>
+                                    <td>{{formatDate date "H:m:ss"}}</td>
+                                    <td>{{status}}</td>
+                                    <td>
+                                        <a href="/stories/{{id}}/edit" class="btn amber waves-effect waves-red"><i class="fa fa-pencil-alt"></i></a>
+                                        <form action="/stories/{{id}}?_method=delete" method="POST" class="inline-button">
+                                            <button type="submit" class="btn red waves-effect waves-orange"><i class="fa fa-times"></i> </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    {{else}}
+                        <p>You haven't created any stories yet.</p>
+                    {{/if}}
+                    </span>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="fa fa-cog"></i>Profile Settings</div>
+                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            </li>
+        </ul>
+    </div>
+</div>
+

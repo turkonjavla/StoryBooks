@@ -8,6 +8,9 @@ main {
     flex: 1 0 auto;
 }
 
+.mt-3 {
+    margin-top: 50px;
+}
 .mt-5 {
     margin-top: 80px;
 }
@@ -68,4 +71,8 @@ main {
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
     color: #18bc9c;
+}
+
+.inline-button {
+    display: inline;
 }
