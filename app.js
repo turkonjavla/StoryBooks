@@ -2,6 +2,7 @@ const cookieParser = require("cookie-parser"),
       mongoose     = require("mongoose"),
       passport     = require("passport"),
       session      = require("express-session"),
+      moment       = require("moment"),
       express      = require("express"),
       exphbs       = require("express-handlebars"),
       keys         = require("./config/keys"),
@@ -31,6 +32,7 @@ app.use((req, res, next) => {
     res.locals.user = req.user || null;
     next();
 });
+app.locals.moment = moment;
 
  // PASSPORT CONFIG
  require("./config/passport")(passport);
