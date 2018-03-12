@@ -97,7 +97,16 @@ router.put("/:id", ensureAuthenticated, (req, res) => {
                     })
                     .catch(err => console.log(err));
             });
+});
 
+// DELETE
+router.delete("/:id", (req, res) => {
+    let id = req.params.id;
+
+    Story.findByIdAndRemove(id)
+        .then(() => {
+            res.redirect("/dashboard");
+        });
 });
 
 module.exports = router;
