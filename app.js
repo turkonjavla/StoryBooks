@@ -13,9 +13,10 @@ const cookieParser = require("cookie-parser"),
 
 // HANDLEBARS HELPERS
 const {
-    truncate,
     stripTags,
-    formatDate
+    formatDate,
+    select
+
 } = require("./helpers/hbs");
 
 
@@ -54,9 +55,9 @@ app.use(bodyParser.json());
 // HANDLEBARS
 app.engine("handlebars", exphbs({
     helpers: {
-        truncate: truncate,
         stripTags: stripTags,
-        formatDate: formatDate
+        formatDate: formatDate,
+        select: select
     },
     defaultLayout: "main"
 }));
