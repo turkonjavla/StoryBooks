@@ -63,13 +63,16 @@ router.get("/:id", (req, res) => {
 
 // EDIT
 router.get("/:id/edit", ensureAuthenticated, (req, res) => {
-    let id = req.params.id;
-
-    Story.findById(id)
-        .populate("user")
+    Story.findOne({_id: req.params.id})
         .then(story => {
-            res.render("stories/edit", {story: story});
-        });
+            if(story.user != req.user.id) {
+                res.redirect("/stories/" + req.params.id);
+            }
+            else {
+                res.render("stories/edit", {story: story});
+            }
+        })
+        .catch(err => console.log(err));
 });
 
 // UPDATE

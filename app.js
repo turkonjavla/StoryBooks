@@ -16,7 +16,8 @@ const methodOverride = require("method-override"),
 const {
     stripTags,
     formatDate,
-    select
+    select,
+    editIcon
 
 } = require("./helpers/hbs");
 
@@ -61,7 +62,8 @@ app.engine("handlebars", exphbs({
     helpers: {
         stripTags: stripTags,
         formatDate: formatDate,
-        select: select
+        select: select,
+        editIcon: editIcon
     },
     defaultLayout: "main"
 }));

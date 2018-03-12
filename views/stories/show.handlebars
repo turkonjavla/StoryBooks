@@ -12,9 +12,8 @@
     </div>
     <div class="col s12 m9">
         <h3>{{story.title}} 
-            <a href="/stories/{{story.id}}/edit" class="btn-floating amber darken-3 waves-effect hoverable tooltipped" data-position='bottom' data-delay='1' data-tooltip='Edit'>
-                <i class="fa fa-pencil-alt fa-1x"></i>
-            </a>
+            {{{editIcon story.user.id user.id story.id false}}}
+
         </h3>
         <div class="card hoverable">
             <div class="card-content">
