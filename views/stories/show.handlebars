@@ -11,7 +11,11 @@
         </div>
     </div>
     <div class="col s12 m9">
-        <h3>{{story.title}}</h3>
+        <h3>{{story.title}} 
+            <a href="/stories/{{story.id}}/edit" class="btn-floating amber darken-3 waves-effect hoverable tooltipped" data-position='bottom' data-delay='1' data-tooltip='Edit'>
+                <i class="fa fa-pencil-alt fa-1x"></i>
+            </a>
+        </h3>
         <div class="card hoverable">
             <div class="card-content">
                 <a href="/stories" class="back-to-stories"><i class="fa fa-chevron-left"></i> Back to stories</a>

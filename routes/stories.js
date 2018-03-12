@@ -107,7 +107,8 @@ router.delete("/:id", ensureAuthenticated, (req, res) => {
     Story.findByIdAndRemove(id)
         .then(() => {
             res.redirect("/dashboard");
-        });
+        })
+        .catch(err => console.log(err));
 });
 
 // ADD COMMENT
@@ -123,7 +124,8 @@ router.post("/:id/comment", ensureAuthenticated, (req, res) => {
                     story.save()
                     .then(story => {
                         res.redirect("/stories/" + req.params.id);
-                    });
+                    })
+                    .catch(err => console.log(err));
         });
 });
 
