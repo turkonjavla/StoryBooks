@@ -19,5 +19,33 @@
                 {{{story.body}}}
             </div>
         </div>
+        {{#if story.allowComments}}
+        <div class="card">
+            <div class="card-content">
+                {{#each story.comments}}
+                    <div class="chip hoverable" style="margin-top: 10px">
+                        <img src="{{commentUser.image}}" alt="">{{commentUser.firstName}} {{commentUser.lastName}}
+                    </div>
+                    <p>
+                         <small>Posted: {{formatDate commentDate "MMMM Do YYYY | H:m"}}</small>
+                    </p>
+                   
+                    <p>{{commentBody}}</p>
+                {{/each}}
+                <span class="card-title mt-3">Comment</span>
+                {{#if user}}
+                    <form action="/stories/{{story.id}}/comment" method="post">
+                        <div class="input-field">
+                            <textarea name="commentBody" class="materialize-textarea" cols="30" rows="10"></textarea>
+                            <label for="commentBody">Leave a comment</label>
+                        </div>
+                            <button type="submit" class="btn indigo waves-effect waves-light">Post</button>
+                    </form>
+                {{else}}
+                    <p>You have to be <a href="/auth/google">logged in</a>  to comment.</p>
+                {{/if}}
+            </div>
+        </div>
+        {{/if}}
     </div>
 </div>

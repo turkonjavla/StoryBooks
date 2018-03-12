@@ -54,6 +54,7 @@ router.get("/:id", (req, res) => {
 
     Story.findById(id)
         .populate("user")
+        .populate("comments.commentUser")
         .then(story => {
             res.render("stories/show", {story: story});
         });
@@ -100,12 +101,29 @@ router.put("/:id", ensureAuthenticated, (req, res) => {
 });
 
 // DELETE
-router.delete("/:id", (req, res) => {
+router.delete("/:id", ensureAuthenticated, (req, res) => {
     let id = req.params.id;
 
     Story.findByIdAndRemove(id)
         .then(() => {
             res.redirect("/dashboard");
+        });
+});
+
+// ADD COMMENT
+router.post("/:id/comment", ensureAuthenticated, (req, res) => {
+    Story.findOne({_id: req.params.id})
+        .then(story => {
+                const newComment = {
+                    commentBody: req.body.commentBody,
+                    commentUser: req.user.id
+                }
+                // push to comments array 
+                story.comments.unshift(newComment)
+                    story.save()
+                    .then(story => {
+                        res.redirect("/stories/" + req.params.id);
+                    });
         });
 });
 
