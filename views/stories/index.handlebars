@@ -3,11 +3,6 @@
     {{#each stories}}
         <div class="col s12 m4 mb-5">
             <div class="card hoverable">
-                <div class="card-image">
-                    {{#if user}}
-                        {{{editIcon user.id ../user.id id}}}
-                    {{/if}}
-                </div>
                 <div class="card-content center-align">
                     <span class="card-title">{{title}}</span>
                     <p class="card-text truncate">{{stripTags body}}</p>

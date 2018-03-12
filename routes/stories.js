@@ -7,6 +7,15 @@ const Story = require("../models/Story");
 // Authentication
 const {ensureAuthenticated, ensureGuest} = require("../helpers/auth");
 
+// SHOW user stories
+router.get("/user/:id", (req, res) => {
+    Story.find({user: req.params.id, status: "public"})
+        .populate("user")
+        .then(stories => {
+            res.render("stories/index", {stories: stories});
+        });
+});
+
 // INDEX
 router.get("/", (req, res) => {
     Story.find({status: "public"})
