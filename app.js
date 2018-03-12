@@ -1,14 +1,15 @@
-const cookieParser = require("cookie-parser"),
-      bodyParser   = require("body-parser"),
-      mongoose     = require("mongoose"),
-      passport     = require("passport"),
-      session      = require("express-session"),
-      moment       = require("moment"),
-      express      = require("express"),
-      exphbs       = require("express-handlebars"),
-      keys         = require("./config/keys"),
-      app          = express(),
-      port         = process.env.PORT || 5050;
+const methodOverride = require("method-override"),
+      cookieParser   = require("cookie-parser"),
+      bodyParser     = require("body-parser"),
+      mongoose       = require("mongoose"),
+      passport       = require("passport"),
+      session        = require("express-session"),
+      express        = require("express"),
+      moment         = require("moment"),
+      exphbs         = require("express-handlebars"),
+      keys           = require("./config/keys"),
+      app            = express(),
+      port           = process.env.PORT || 5050;
 
 
 // HANDLEBARS HELPERS
@@ -51,6 +52,9 @@ app.locals.moment = moment(new Date).format("YYYY");
 // BODY PARSER
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+// Method override
+app.use(methodOverride("_method"));
 
 // HANDLEBARS
 app.engine("handlebars", exphbs({

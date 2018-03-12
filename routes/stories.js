@@ -71,4 +71,33 @@ router.get("/:id/edit", ensureAuthenticated, (req, res) => {
         });
 });
 
+// UPDATE
+router.put("/:id", ensureAuthenticated, (req, res) => {
+        Story.findOne({
+            _id: req.params.id
+        })
+            .then(story => {
+                let allowComments;
+
+                if(req.body.allowComments) {
+                    allowComments = true
+                }
+                else {
+                    allowComments = false;
+                }
+
+                story.title = req.body.title;
+                story.status = req.body.status;
+                story.allowComments = allowComments;
+                story.body = req.body.body;
+
+                story.save()
+                    .then(() => {
+                        res.redirect("/stories/" + req.params.id);
+                    })
+                    .catch(err => console.log(err));
+            });
+
+});
+
 module.exports = router;

@@ -1,6 +1,6 @@
 <h3 class="center-align">Edit story</h3>
 <div class="row">
-    <form action="/stories" method="POST" class="col s12">
+    <form action="/stories/{{story.id}}?_method=put" method="POST" class="col s12">
         <div class="row center-align">
             <div class="input-field">
                 <input type="text" name="title" value="{{story.title}}">
@@ -32,6 +32,6 @@
                 <textarea name="body">{{story.body}}</textarea>
             </div>
         </div>
-        <input type="submit" value="Publish" class="btn teal lighten-1">
+        <input type="submit" value="Update" class="btn indigo lighten-1">
     </form>
 </div>
