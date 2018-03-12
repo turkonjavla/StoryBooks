@@ -35,7 +35,7 @@
                                     <td>
                                         <a href="/stories/{{id}}/edit" class="btn amber waves-effect waves-red"><i class="fa fa-pencil-alt"></i></a>
                                         <form action="/stories/{{id}}?_method=delete" method="POST" class="inline-button">
-                                            <button type="submit" class="btn red waves-effect waves-orange"><i class="fa fa-times"></i> </button>
+                                            <button type="submit" class="btn red waves-effect waves-orange" onclick="Materialize.toast('Story removed', 4000, 'rounded')"><i class="fa fa-times"></i> </button>
                                         </form>
                                     </td>
                                 </tr>
