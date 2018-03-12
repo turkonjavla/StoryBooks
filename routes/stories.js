@@ -7,7 +7,7 @@ const Story = require("../models/Story");
 // Authentication
 const {ensureAuthenticated, ensureGuest} = require("../helpers/auth");
 
-// STORIES INDEX
+// INDEX
 router.get("/", (req, res) => {
     Story.find({status: "public"})
         .sort({date: "desc"})
@@ -17,12 +17,12 @@ router.get("/", (req, res) => {
         });
 });
 
-// STORIES NEW
+// NEW
 router.get("/new", ensureAuthenticated, (req, res) => {
     res.render("stories/new");
 });
 
-// STORIES CREATE
+// CREATE
 router.post("/", ensureAuthenticated, (req, res) => {
     let allowComments;
 
@@ -41,7 +41,6 @@ router.post("/", ensureAuthenticated, (req, res) => {
         user: req.user.id
     }
 
-    // CREATE story
     Story.create(newStory)
         .then(story => {
             res.redirect(`/stories/${story.id}`);
@@ -49,7 +48,7 @@ router.post("/", ensureAuthenticated, (req, res) => {
         .catch(err => console.log(err));
 });
 
-// STORIES SHOW
+// SHOW
 router.get("/:id", (req, res) => {
     let id = req.params.id;
 
@@ -60,8 +59,16 @@ router.get("/:id", (req, res) => {
         });
 });
 
+
+// EDIT
 router.get("/:id/edit", ensureAuthenticated, (req, res) => {
-    res.render("stories/edit");
+    let id = req.params.id;
+
+    Story.findById(id)
+        .populate("user")
+        .then(story => {
+            res.render("stories/edit", {story: story});
+        });
 });
 
 module.exports = router;
